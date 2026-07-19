@@ -57,25 +57,20 @@ export default function Home() {
       </h1>
 
       <div
-        className="grid border-2 border-zinc-400 dark:border-zinc-500 rounded-sm overflow-hidden shadow-lg"
+        className="grid gap-px bg-zinc-400 dark:bg-zinc-500 border-2 border-zinc-400 dark:border-zinc-500 rounded-sm overflow-hidden shadow-lg"
         style={{
           gridTemplateColumns: `repeat(${SIZE}, 40px)`,
           gridTemplateRows: `repeat(${SIZE}, 40px)`,
         }}
       >
         {grid.map(([r, c, hasQueen, highlightCount]) => {
-          const isDark = (r + c) % 2 === 1;
-          const baseBg = isDark
-            ? "bg-zinc-300 dark:bg-zinc-600"
-            : "bg-zinc-100 dark:bg-zinc-500";
-
           const opacity = Math.min(highlightCount * 0.22, 0.9);
 
           return (
             <button
               key={encode(r, c)}
               onClick={() => toggleQueen(r, c)}
-              className={`relative flex items-center justify-center ${baseBg} cursor-pointer border-0 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:z-10`}
+              className="relative flex items-center justify-center bg-zinc-200 dark:bg-zinc-700 cursor-pointer border-0 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:z-10"
               aria-label={`${hasQueen ? "Remove queen from" : "Place queen on"} row ${r + 1}, column ${c + 1}`}
             >
               {highlightCount > 0 && (
